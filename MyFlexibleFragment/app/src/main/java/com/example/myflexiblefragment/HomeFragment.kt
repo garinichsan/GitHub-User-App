@@ -29,6 +29,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+        val mCategoryFragment = CategoryFragment()
+        val mFragmentManager = fragmentManager
+        mFragmentManager?.beginTransaction()?.apply {
+            replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
+            addToBackStack(null)
+            commit()
+        }
     }
 }
