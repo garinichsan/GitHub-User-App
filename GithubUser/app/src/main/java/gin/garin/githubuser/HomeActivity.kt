@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import gin.garin.githubuser.databinding.ActivityHomeBinding
-import gin.garin.githubuser.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity() {
 
