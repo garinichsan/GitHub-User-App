@@ -8,6 +8,15 @@ import com.bumptech.glide.request.RequestOptions
 import gin.garin.githubuser.databinding.ItemRowUserBinding
 
 class ListUserAdapter(private val listUser: ArrayList<User>): RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: User)
+    }
 
     class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
@@ -26,6 +35,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>): RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listUser[position])
+        holder.itemView.setOnClickListener{ onItemClickCallback.onItemClicked(listUser[holder.adapterPosition]) }
     }
 
     override fun getItemCount(): Int = listUser.size

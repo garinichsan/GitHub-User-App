@@ -7,7 +7,7 @@
     <string name="location">Lokasi</string>
     <string name="following">Following: </string>
     <string name="follower">Follower: </string>
-    <string name="favorite">Favorite</string>
+    <string name="repository">Repository: </string>
     <string name="share">Share</string>
 
     <string-array name="username">

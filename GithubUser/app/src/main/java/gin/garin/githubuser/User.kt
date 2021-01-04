@@ -12,5 +12,5 @@ data class User(
     val location: String,
     val following: String,
     val follower: String,
-    val Repository: String,
+    val repository: String,
 ): Parcelable

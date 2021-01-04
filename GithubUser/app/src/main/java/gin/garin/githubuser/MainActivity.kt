@@ -1,9 +1,14 @@
 package gin.garin.githubuser
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import gin.garin.githubuser.DetailActivity.Companion.EXTRA_DATA
 import gin.garin.githubuser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -53,6 +58,15 @@ class MainActivity : AppCompatActivity() {
         binding.rvUser.layoutManager = LinearLayoutManager(this)
         val listUserAdapter = ListUserAdapter(list)
         binding.rvUser.adapter = listUserAdapter
+
+        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: User) {
+                val detail = Intent (this@MainActivity, DetailActivity::class.java)
+                detail.putExtra(EXTRA_DATA, data)
+                startActivity(detail)
+            }
+        })
+
     }
 
 }
