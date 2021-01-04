@@ -9,6 +9,7 @@
     <string name="follower">Follower: </string>
     <string name="repository">Repository: </string>
     <string name="share">Share</string>
+    <string name="logo">Github App Logo</string>
 
     <string-array name="username">
         <item>JakeWharton</item>

@@ -4,7 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,60 +18,24 @@ import gin.garin.githubuser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private val list = ArrayList<User>()
+    private lateinit var logoAnim : Animation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+        actionBar?.hide()
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        binding.rvUser.setHasFixedSize(true)
+        Handler().postDelayed(Runnable {
+            val home = Intent(this@MainActivity, HomeActivity::class.java)
+            startActivity(home)
+            finish()
+        }, 3000)
 
-        list.addAll(getListUseres())
-        showRecyclerList()
+        logoAnim = AnimationUtils.loadAnimation(this,R.anim.logo_animation)
+
+        val image : ImageView = findViewById(R.id.logo)
+
+        image.animation = logoAnim
     }
-
-    @SuppressLint("Recycle")
-    fun getListUseres(): ArrayList<User> {
-        val dataUserName = resources.getStringArray(R.array.username)
-        val dataName = resources.getStringArray(R.array.name)
-        val dataCompany = resources.getStringArray(R.array.company)
-        val dataAvatar = resources.obtainTypedArray(R.array.avatar)
-        val dataLocation = resources.getStringArray(R.array.location)
-        val dataFollowing = resources.getStringArray(R.array.following)
-        val dataFollower = resources.getStringArray(R.array.followers)
-        val dataRepo = resources.getStringArray(R.array.repository)
-        val listUser = ArrayList<User>()
-        for (position in dataName.indices) {
-            val user = User(
-                    dataUserName[position],
-                    dataName[position],
-                    dataCompany[position],
-                    dataAvatar.getResourceId(position, -1),
-                    dataLocation[position],
-                    dataFollowing[position],
-                    dataFollower[position],
-                    dataRepo[position],
-            )
-            listUser.add(user)
-        }
-        return listUser
-    }
-
-    private fun showRecyclerList() {
-        binding.rvUser.layoutManager = LinearLayoutManager(this)
-        val listUserAdapter = ListUserAdapter(list)
-        binding.rvUser.adapter = listUserAdapter
-
-        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: User) {
-                val detail = Intent (this@MainActivity, DetailActivity::class.java)
-                detail.putExtra(EXTRA_DATA, data)
-                startActivity(detail)
-            }
-        })
-
-    }
-
 }
