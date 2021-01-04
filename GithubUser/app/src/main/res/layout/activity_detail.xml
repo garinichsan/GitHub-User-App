@@ -48,6 +48,7 @@
             android:id="@+id/str_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
             android:text="@string/following" />
         <TextView
             android:id="@+id/tv_detail_following"
@@ -62,6 +63,7 @@
             android:id="@+id/str_follower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
             android:layout_toEndOf="@id/tv_detail_following"
             android:text="@string/follower" />
         <TextView
@@ -77,6 +79,7 @@
             android:id="@+id/str_repository"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
             android:layout_toEndOf="@id/tv_detail_follower"
             android:text="@string/repository" />
         <TextView
@@ -103,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
 
                 android:text="@string/company" />
             <TextView
@@ -111,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 tools:text="Dicoding" />
         </TableRow>
 
@@ -123,14 +126,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="@string/location" />
             <TextView
                 android:id="@+id/tv_detail_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 tools:text="Indonesia" />
         </TableRow>
 
