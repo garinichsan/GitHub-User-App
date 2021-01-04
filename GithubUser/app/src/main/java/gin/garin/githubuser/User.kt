@@ -8,7 +8,7 @@ data class User(
     val username: String,
     val name: String,
     val company: String,
-    val avatar: String,
+    val avatar: Int,
     val location: String,
     val following: String,
     val follower: String,

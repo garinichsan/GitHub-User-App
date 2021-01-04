@@ -1,5 +1,6 @@
 package gin.garin.githubuser
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,11 +22,12 @@ class MainActivity : AppCompatActivity() {
         showRecyclerList()
     }
 
+    @SuppressLint("Recycle")
     fun getListUseres(): ArrayList<User> {
         val dataUserName = resources.getStringArray(R.array.username)
         val dataName = resources.getStringArray(R.array.name)
         val dataCompany = resources.getStringArray(R.array.company)
-        val dataAvatar = resources.getStringArray(R.array.avatar)
+        val dataAvatar = resources.obtainTypedArray(R.array.avatar)
         val dataLocation = resources.getStringArray(R.array.location)
         val dataFollowing = resources.getStringArray(R.array.following)
         val dataFollower = resources.getStringArray(R.array.followers)
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                     dataUserName[position],
                     dataName[position],
                     dataCompany[position],
-                    dataAvatar[position],
+                    dataAvatar.getResourceId(position, -1),
                     dataLocation[position],
                     dataFollowing[position],
                     dataFollower[position],

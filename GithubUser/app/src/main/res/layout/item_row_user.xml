@@ -25,7 +25,7 @@
             android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="@string/users_name" />
+            tools:text="@string/name" />
         <TextView
             android:id="@+id/tv_item_username"
             android:layout_width="match_parent"

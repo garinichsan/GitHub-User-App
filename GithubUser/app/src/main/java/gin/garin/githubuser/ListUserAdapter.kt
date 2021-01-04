@@ -12,10 +12,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>): RecyclerView.Adapt
     class ListViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             with(binding){
-                Glide.with(itemView.context)
-                    .load(user.avatar)
-                    .apply(RequestOptions().override(55, 55))
-                    .into(imgItemPhoto)
+                imgItemPhoto.setImageResource(user.avatar)
                 tvItemName.text = user.name
                 tvItemUsername.text = user.username
             }
