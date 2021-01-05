@@ -2,6 +2,8 @@ package gin.garin.githubuser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import gin.garin.githubuser.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
@@ -28,6 +30,13 @@ class DetailActivity : AppCompatActivity() {
             tvDetailCompany.text = data.company
             tvDetailLocation.text = data.location
         }
+
+        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        val viewPager: ViewPager = findViewById(R.id.view_pager)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.tabs)
+        tabs.setupWithViewPager(viewPager)
+        supportActionBar?.elevation = 0f
 
 
     }

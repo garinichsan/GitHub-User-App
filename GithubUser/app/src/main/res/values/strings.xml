@@ -116,4 +116,9 @@
         <item>@drawable/user9</item>
         <item>@drawable/user10</item>
     </array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_tab_text">This is Tab</string>
+    <string name="tab_text_following">Following</string>
+    <string name="tab_text_follower">Follower</string>
 </resources>
