@@ -50,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
         adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 val detail = Intent (this@HomeActivity, DetailActivity::class.java)
-                detail.putExtra(DetailActivity.EXTRA_DATA, data)
+                detail.putExtra(DetailActivity.EXTRA_DATA, data.username)
                 startActivity(detail)
             }
         })
