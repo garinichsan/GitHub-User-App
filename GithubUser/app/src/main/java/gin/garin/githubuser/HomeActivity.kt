@@ -7,15 +7,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import gin.garin.githubuser.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private val list = ArrayList<User>()
+    private lateinit var adapter: ListUserAdapter
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,43 +27,27 @@ class HomeActivity : AppCompatActivity() {
 
         binding.rvUser.setHasFixedSize(true)
 
-        list.addAll(getListUseres())
         showRecyclerList()
-    }
 
-    @SuppressLint("Recycle")
-    fun getListUseres(): ArrayList<User> {
-        val dataUserName = resources.getStringArray(R.array.username)
-        val dataName = resources.getStringArray(R.array.name)
-        val dataCompany = resources.getStringArray(R.array.company)
-        val dataAvatar = resources.obtainTypedArray(R.array.avatar)
-        val dataLocation = resources.getStringArray(R.array.location)
-        val dataFollowing = resources.getStringArray(R.array.following)
-        val dataFollower = resources.getStringArray(R.array.followers)
-        val dataRepo = resources.getStringArray(R.array.repository)
-        val listUser = ArrayList<User>()
-        for (position in dataName.indices) {
-            val user = User(
-                    dataUserName[position],
-                    dataName[position],
-                    dataCompany[position],
-                    dataAvatar.getResourceId(position, -1),
-                    dataLocation[position],
-                    dataFollowing[position],
-                    dataFollower[position],
-                    dataRepo[position],
-            )
-            listUser.add(user)
-        }
-        return listUser
+        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        homeViewModel.setUser("garinichsan")
+
+        homeViewModel.getUser().observe(this@HomeActivity, { userItems ->
+            if (userItems != null) {
+                adapter.setData(userItems)
+            }
+        })
+
     }
 
     private fun showRecyclerList() {
-        binding.rvUser.layoutManager = LinearLayoutManager(this)
-        val listUserAdapter = ListUserAdapter(list)
-        binding.rvUser.adapter = listUserAdapter
+        adapter = ListUserAdapter()
+        adapter.notifyDataSetChanged()
 
-        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
+        binding.rvUser.layoutManager = LinearLayoutManager(this)
+        binding.rvUser.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 val detail = Intent (this@HomeActivity, DetailActivity::class.java)
                 detail.putExtra(DetailActivity.EXTRA_DATA, data)
@@ -68,6 +55,14 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -85,6 +80,15 @@ class HomeActivity : AppCompatActivity() {
              */
             override fun onQueryTextSubmit(query: String): Boolean {
                 Toast.makeText(this@HomeActivity, query, Toast.LENGTH_SHORT).show()
+                showLoading(true)
+                homeViewModel.setUser(query)
+
+                homeViewModel.getUser().observe(this@HomeActivity, { userItems ->
+                    if (userItems != null) {
+                        adapter.setData(userItems)
+                        showLoading(false)
+                    }
+                })
                 return true
             }
 
