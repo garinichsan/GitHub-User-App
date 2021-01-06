@@ -34,7 +34,7 @@ class ListUserAdapter: RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
                     .apply(RequestOptions().override(55, 55))
                     .into(imgItemPhoto)
                 tvItemName.text = user.name
-                tvItemUsername.text = user.username
+                tvItemName.text = user.username
             }
         }
     }
