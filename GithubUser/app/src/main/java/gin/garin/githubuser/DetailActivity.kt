@@ -37,8 +37,13 @@ class DetailActivity : AppCompatActivity() {
                         .apply(RequestOptions().override(55, 55))
                         .into(profilPict)
                     tvDetailFollowing.text = userItems.following
+                    strFollowing.text = getString(R.string.following)
                     tvDetailFollower.text = userItems.follower
+                    val follamt = userItems.follower?.toInt() as Int
+                    strFollower.text = resources.getQuantityString(R.plurals.follower,(if(follamt==0) 1 else follamt))
                     tvDetailRepository.text = userItems.repository
+                    val repamt = userItems.follower?.toInt() as Int
+                    strRepository.text = resources.getQuantityString(R.plurals.repository,(if(repamt==0) 1 else repamt))
                     tvDetailCompany.text = userItems.company
                     tvDetailLocation.text = userItems.location
                 }
@@ -47,6 +52,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        sectionsPagerAdapter.username = username
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)

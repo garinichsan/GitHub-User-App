@@ -6,9 +6,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         showRecyclerList()
 
         homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
-        homeViewModel.setUser("garinichsan")
+        homeViewModel.setUser(getString(R.string.initial_search))
 
         homeViewModel.getUser().observe(this@HomeActivity, { userItems ->
             if (userItems != null) {
@@ -75,11 +78,8 @@ class HomeActivity : AppCompatActivity() {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = resources.getString(R.string.search_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            /*
-            Gunakan method ini ketika search selesai atau OK
-             */
+
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(this@HomeActivity, query, Toast.LENGTH_SHORT).show()
                 showLoading(true)
                 homeViewModel.setUser(query)
 
@@ -92,14 +92,19 @@ class HomeActivity : AppCompatActivity() {
                 return true
             }
 
-            /*
-            Gunakan method ini untuk merespon tiap perubahan huruf pada searchView
-             */
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
         })
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.change_language) {
+            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(mIntent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

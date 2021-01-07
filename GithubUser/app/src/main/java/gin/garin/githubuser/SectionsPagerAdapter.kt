@@ -8,11 +8,17 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 class SectionsPagerAdapter (private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
+    var username: String? = null
+
     @StringRes
-    private val TAB_TITLES = intArrayOf(R.string.tab_text_following, R.string.tab_text_follower)
+    private val TAB_TITLES = intArrayOf(R.string.following, R.string.following)
 
     override fun getItem(position: Int): Fragment {
-        val fragment = DetailFragment.newInstance(position + 1)
+        var fragment: Fragment? = null
+        when (position){
+            0 -> fragment = DetailFragment.newInstance("https://api.github.com/users/${username}/following")
+            1 -> fragment = DetailFragment.newInstance("https://api.github.com/users/${username}/followers")
+        }
         return fragment as Fragment
     }
 

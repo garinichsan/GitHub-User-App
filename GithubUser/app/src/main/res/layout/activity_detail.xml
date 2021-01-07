@@ -10,8 +10,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profil_pict"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         android:layout_marginTop="16dp"
@@ -46,50 +46,47 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/str_following"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:text="@string/following" />
-        <TextView
             android:id="@+id/tv_detail_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/str_following"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:textColor="@android:color/white"
             tools:text="99" />
-
         <TextView
-            android:id="@+id/str_follower"
+            android:id="@+id/str_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
             android:layout_toEndOf="@id/tv_detail_following"
-            android:text="@string/follower" />
+            android:layout_marginEnd="16dp" />
+
         <TextView
             android:id="@+id/tv_detail_follower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/str_follower"
-            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/str_following"
+            android:layout_marginEnd="8dp"
             android:textColor="@android:color/white"
             tools:text="99" />
-
         <TextView
-            android:id="@+id/str_repository"
+            android:id="@+id/str_follower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@id/tv_detail_follower"
-            android:text="@string/repository" />
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/tv_detail_follower"/>
+
         <TextView
             android:id="@+id/tv_detail_repository"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/str_repository"
+            android:layout_marginEnd="8dp"
+            android:layout_toEndOf="@id/str_follower"
             android:textColor="@android:color/white"
             tools:text="99" />
+        <TextView
+            android:id="@+id/str_repository"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_detail_repository"/>
 
     </RelativeLayout>
 

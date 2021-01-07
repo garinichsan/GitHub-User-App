@@ -12,6 +12,7 @@ import android.widget.ImageView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var logoAnim : Animation
+    private val splashDuration:Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             val home = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(home)
             finish()
-        }, 3000)
+        }, splashDuration)
 
         logoAnim = AnimationUtils.loadAnimation(this,R.anim.logo_animation)
 
