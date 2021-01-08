@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +44,8 @@ class DetailFragment : Fragment() {
         adapter = ListUserAdapter()
         adapter.notifyDataSetChanged()
 
+        val progressBar: ProgressBar = view.findViewById(R.id.fragment_progress_bar)
+        progressBar.visibility = View.VISIBLE
         val rvUser: RecyclerView = view.findViewById(R.id.fragment_rv_user)
 
         rvUser.layoutManager = LinearLayoutManager(activity)
@@ -54,6 +57,7 @@ class DetailFragment : Fragment() {
         detailViewModel.getFollow().observe(viewLifecycleOwner, { userItems ->
             if (userItems != null) {
                 adapter.setData(userItems)
+                progressBar.visibility = View.GONE
             }
         })
 
@@ -65,4 +69,5 @@ class DetailFragment : Fragment() {
             }
         })
     }
+
 }

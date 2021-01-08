@@ -39,6 +39,14 @@
         android:fontFamily="sans-serif-condensed"
         tools:text="@string/username" />
 
+    <ProgressBar
+        android:id="@+id/detailProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -101,12 +109,12 @@
             android:layout_marginBottom="8dp">
 
             <TextView
+                android:id="@+id/str_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:textSize="18sp"
-
-                android:text="@string/company" />
+                tools:text="@string/company" />
             <TextView
                 android:id="@+id/tv_detail_company"
                 android:layout_width="match_parent"
@@ -121,11 +129,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp">
             <TextView
+                android:id="@+id/str_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:textSize="18sp"
-                android:text="@string/location" />
+                tools:text="@string/location" />
             <TextView
                 android:id="@+id/tv_detail_location"
                 android:layout_width="match_parent"

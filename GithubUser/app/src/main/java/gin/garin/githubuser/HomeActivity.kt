@@ -33,11 +33,13 @@ class HomeActivity : AppCompatActivity() {
         showRecyclerList()
 
         homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        showLoading(true)
         homeViewModel.setUser(getString(R.string.initial_search))
 
         homeViewModel.getUser().observe(this@HomeActivity, { userItems ->
             if (userItems != null) {
                 adapter.setData(userItems)
+                showLoading(false)
             }
         })
 

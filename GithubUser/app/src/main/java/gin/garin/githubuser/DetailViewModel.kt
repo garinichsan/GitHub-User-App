@@ -74,7 +74,6 @@ class DetailViewModel: ViewModel() {
                 }
             }
             override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
-                Log.d("onFailure", statusCode.toString())
                 Log.d("onFailure", error.message.toString())
             }
         })

@@ -2,6 +2,7 @@ package gin.garin.githubuser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
@@ -24,6 +25,8 @@ class DetailActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra(EXTRA_DATA) as String
 
+        binding.detailProgressBar.visibility = View.VISIBLE
+
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
         detailViewModel.setUser(username)
 
@@ -42,11 +45,14 @@ class DetailActivity : AppCompatActivity() {
                     val follamt = userItems.follower?.toInt() as Int
                     strFollower.text = resources.getQuantityString(R.plurals.follower,(if(follamt==0) 1 else follamt))
                     tvDetailRepository.text = userItems.repository
-                    val repamt = userItems.follower?.toInt() as Int
+                    val repamt = userItems.repository?.toInt() as Int
                     strRepository.text = resources.getQuantityString(R.plurals.repository,(if(repamt==0) 1 else repamt))
+                    strCompany.text = getString(R.string.company)
                     tvDetailCompany.text = userItems.company
+                    strLocation.text = getString(R.string.location)
                     tvDetailLocation.text = userItems.location
                 }
+                binding.detailProgressBar.visibility = View.GONE
             }
         })
 
@@ -61,4 +67,5 @@ class DetailActivity : AppCompatActivity() {
 
 
     }
+
 }
