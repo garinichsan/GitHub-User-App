@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
@@ -73,6 +74,7 @@ class HomeActivity : AppCompatActivity() {
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = menu.findItem(R.id.search).actionView as SearchView
+        val delayBuffer :Long = 3000
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = resources.getString(R.string.search_hint)
@@ -85,7 +87,9 @@ class HomeActivity : AppCompatActivity() {
                 homeViewModel.getUser().observe(this@HomeActivity, { userItems ->
                     if (userItems != null) {
                         adapter.setData(userItems)
-                        showLoading(false)
+                        Handler().postDelayed({
+                            showLoading(false)
+                        },delayBuffer)
                     }
                 })
                 return true
