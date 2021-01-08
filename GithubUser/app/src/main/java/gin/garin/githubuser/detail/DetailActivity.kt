@@ -1,4 +1,4 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayout
+import gin.garin.githubuser.R
 import gin.garin.githubuser.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
@@ -27,7 +28,8 @@ class DetailActivity : AppCompatActivity() {
 
         binding.detailProgressBar.visibility = View.VISIBLE
 
-        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            DetailViewModel::class.java)
         detailViewModel.setUser(username)
 
         detailViewModel.getUser().observe(this@DetailActivity, { userItems ->

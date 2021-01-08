@@ -1,9 +1,10 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.detail
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import gin.garin.githubuser.R
 
 class SectionsPagerAdapter (private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -12,8 +13,10 @@ class SectionsPagerAdapter (private val mContext: Context, fm: FragmentManager) 
     override fun getItem(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position){
-            0 -> fragment = DetailFragment.newInstance("https://api.github.com/users/${username}/following")
-            1 -> fragment = DetailFragment.newInstance("https://api.github.com/users/${username}/followers")
+            0 -> fragment =
+                DetailFragment.newInstance("https://api.github.com/users/${username}/following")
+            1 -> fragment =
+                DetailFragment.newInstance("https://api.github.com/users/${username}/followers")
         }
         return fragment as Fragment
     }

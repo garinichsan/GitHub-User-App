@@ -1,4 +1,4 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.home
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
+import gin.garin.githubuser.BuildConfig
+import gin.garin.githubuser.data.User
 import org.json.JSONObject
 
 class HomeViewModel: ViewModel() {
@@ -17,7 +19,7 @@ class HomeViewModel: ViewModel() {
         val listItems = ArrayList<User>()
         val url = "https://api.github.com/search/users?q=${keyword}"
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "11487382783a8420ca68825639b366e5383807f0")
+        client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
         client.addHeader("User-agent", "request")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

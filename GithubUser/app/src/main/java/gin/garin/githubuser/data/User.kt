@@ -1,4 +1,4 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

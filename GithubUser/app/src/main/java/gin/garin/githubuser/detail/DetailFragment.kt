@@ -1,4 +1,4 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,9 @@ import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import gin.garin.githubuser.R
+import gin.garin.githubuser.data.User
+import gin.garin.githubuser.home.ListUserAdapter
 
 
 class DetailFragment : Fragment() {
@@ -50,7 +53,8 @@ class DetailFragment : Fragment() {
         rvUser.layoutManager = LinearLayoutManager(activity)
         rvUser.adapter = adapter
 
-        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            DetailViewModel::class.java)
         detailViewModel.setFollow(url)
 
         detailViewModel.getFollow().observe(viewLifecycleOwner, { userItems ->

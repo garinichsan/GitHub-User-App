@@ -1,4 +1,4 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.home
 
 import android.app.SearchManager
 import android.content.Context
@@ -13,6 +13,9 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import gin.garin.githubuser.detail.DetailActivity
+import gin.garin.githubuser.R
+import gin.garin.githubuser.data.User
 import gin.garin.githubuser.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -30,7 +33,8 @@ class HomeActivity : AppCompatActivity() {
 
         showRecyclerList()
 
-        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            HomeViewModel::class.java)
         showLoading(true)
         homeViewModel.setUser(getString(R.string.initial_search))
 
@@ -87,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
                 homeViewModel.getUser().observe(this@HomeActivity, { userItems ->
                     if (userItems != null) {
                         adapter.setData(userItems)
-                        Handler().postDelayed({
+                        Handler(mainLooper).postDelayed({
                             showLoading(false)
                         },delayBuffer)
                     }

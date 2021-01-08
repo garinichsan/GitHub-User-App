@@ -10,12 +10,13 @@ android {
 
     defaultConfig {
         applicationId "gin.garin.githubuser"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GITHUB_TOKEN", '"11487382783a8420ca68825639b366e5383807f0"')
     }
 
     buildTypes {

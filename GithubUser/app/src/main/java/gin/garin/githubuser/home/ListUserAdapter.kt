@@ -1,10 +1,11 @@
-package gin.garin.githubuser
+package gin.garin.githubuser.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import gin.garin.githubuser.data.User
 import gin.garin.githubuser.databinding.ItemRowUserBinding
 
 class ListUserAdapter: RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
