@@ -1,7 +1,6 @@
 package gin.garin.githubuser
 
 import android.content.Context
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -19,7 +18,7 @@ class SectionsPagerAdapter (private val mContext: Context, fm: FragmentManager) 
         return fragment as Fragment
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return when(position){
             1 -> mContext.resources.getQuantityString(R.plurals.follower,2)
             else -> mContext.resources.getString(R.string.following)
