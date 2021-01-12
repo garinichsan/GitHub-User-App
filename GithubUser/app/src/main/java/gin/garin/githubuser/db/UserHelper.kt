@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns._ID
+import gin.garin.githubuser.db.UserContract.UserColumns.Companion.COLUMN_USERNAME
 import gin.garin.githubuser.db.UserContract.UserColumns.Companion.TABLE_NAME
 
 class UserHelper(context: Context) {
@@ -47,19 +48,22 @@ class UserHelper(context: Context) {
                 null)
     }
 
-    fun queryById(id: String): Cursor {
-        return database.query(DATABASE_TABLE, null, "$_ID = ?", arrayOf(id), null, null, null, null)
+    fun findByUsername(username: String): Cursor {
+        return database.query(DATABASE_TABLE, null, "$COLUMN_USERNAME = ?", arrayOf(username), null, null, null, "1")
+    }
+
+    fun checkUsername(username: String): Boolean {
+        val cursor = database.query(DATABASE_TABLE, null, "$COLUMN_USERNAME = ?", arrayOf(username), null, null, null, null)
+        val sum = cursor.count
+        cursor.close()
+        return sum > 0
     }
 
     fun insert(values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
     }
 
-    fun update(id: String, values: ContentValues?): Int {
-        return database.update(DATABASE_TABLE, values, "$_ID = ?", arrayOf(id))
-    }
-
-    fun deleteById(id: String): Int {
-        return database.delete(DATABASE_TABLE, "$_ID = '$id'", null)
+    fun deleteByUsername(username: String): Int {
+        return database.delete(DATABASE_TABLE, "$COLUMN_USERNAME = '$username'", null)
     }
 }

@@ -34,6 +34,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var values: ContentValues
 
     private var favStatus: Boolean = false
+    private var username: String = "garin"
     private lateinit var favIcon: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val username = intent.getStringExtra(EXTRA_DATA) as String
+        username = intent.getStringExtra(EXTRA_DATA) as String
 
         binding.detailProgressBar.visibility = View.VISIBLE
 
@@ -112,7 +113,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.detail_favorite) {
             favStatus = !favStatus
-            userHelper.insert(values)
+            if (favStatus) userHelper.insert(values) else userHelper.deleteByUsername(username)
             this.invalidateOptionsMenu()
         }
         return super.onOptionsItemSelected(item)
@@ -120,6 +121,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         super.onPrepareOptionsMenu(menu)
+        if (userHelper.checkUsername(username)) favStatus = true
         if(favStatus){
             favIcon.setIcon(R.drawable.ic_favorite)
         } else {
