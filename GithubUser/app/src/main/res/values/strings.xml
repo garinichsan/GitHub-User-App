@@ -26,4 +26,5 @@
     <string name="search_hint">Enter username</string>
     <string name="search">Search</string>
     <string name="change_language_settings">Change language settings</string>
+    <string name="favorite">Favorite</string>
 </resources>

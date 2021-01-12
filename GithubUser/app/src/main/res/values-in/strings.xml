@@ -23,4 +23,5 @@
     <string name="search_hint">Masukkan username</string>
     <string name="search">Cari</string>
     <string name="change_language_settings">Ubah pengaturan bahasa</string>
+    <string name="favorite">Favorite</string>
 </resources>
