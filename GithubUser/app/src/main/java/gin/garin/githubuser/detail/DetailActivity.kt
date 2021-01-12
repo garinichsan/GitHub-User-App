@@ -34,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var values: ContentValues
 
     private var favStatus: Boolean = false
-    private var username: String = "garin"
+    private var username: String = ""
     private lateinit var favIcon: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,6 +129,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        userHelper.close()
     }
 
 }

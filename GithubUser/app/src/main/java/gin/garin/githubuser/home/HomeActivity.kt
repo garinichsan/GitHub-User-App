@@ -17,6 +17,7 @@ import gin.garin.githubuser.detail.DetailActivity
 import gin.garin.githubuser.R
 import gin.garin.githubuser.data.User
 import gin.garin.githubuser.databinding.ActivityHomeBinding
+import gin.garin.githubuser.favorite.FavoriteActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -109,6 +110,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.change_language) {
             val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(mIntent)
+        } else if (item.itemId == R.id.show_favorite){
+            val mIntent = Intent(this@HomeActivity, FavoriteActivity::class.java)
             startActivity(mIntent)
         }
         return super.onOptionsItemSelected(item)
