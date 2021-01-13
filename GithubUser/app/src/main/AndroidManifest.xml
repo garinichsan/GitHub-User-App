@@ -3,6 +3,8 @@
     package="gin.garin.githubuser">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission android:name="gin.garin.githubuser.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="gin.garin.githubuser.WRITE_DATABASE" android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUser"
         android:usesCleartextTraffic="true">
-        <activity android:name=".favorite.FavoriteActivity"
+        <provider
+            android:name=".db.FavoriteUserProvider"
+            android:authorities="gin.garin.githubuser"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="gin.garin.githubuser.READ_DATABASE"
+            android:writePermission="gin.garin.githubuser.WRITE_DATABASE"/>
+
+        <activity
+            android:name=".favorite.FavoriteActivity"
             android:label="Favorite User" />
         <activity android:name=".home.HomeActivity" />
         <activity

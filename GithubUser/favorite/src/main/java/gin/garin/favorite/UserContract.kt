@@ -1,4 +1,4 @@
-package gin.garin.githubuser.db
+package gin.garin.favorite
 
 import android.net.Uri
 import android.provider.BaseColumns
