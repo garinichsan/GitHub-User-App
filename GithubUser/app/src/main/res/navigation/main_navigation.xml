@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/splashScreenActivity">
+
+    <activity
+        android:id="@+id/splashScreenActivity"
+        android:name="gin.garin.githubuser.SplashScreenActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.garin.gin/githubuser" />
+    </activity>
+</navigation>

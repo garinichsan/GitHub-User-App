@@ -34,5 +34,6 @@
     <string name="icon_notification">icon notification</string>
     <string name="reminder">Reminder</string>
     <string name="notification_time">09:00 AM</string>
+    <string name="reminder_text">Github User Reminder at 09:00 AM</string>
 
 </resources>
