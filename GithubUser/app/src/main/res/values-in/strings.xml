@@ -8,6 +8,10 @@
     <string name="app_name">Github User</string>
     <string name="logo">Github App Logo</string>
 
+    <string name="settings">Pengaturan</string>
+    <string name="user_profile">Profil Pengguna</string>
+    <string name="favorite_user">Pengguna Favorit</string>
+
     <string name="username">Username Pengguna</string>
     <string name="name">Nama Pengguna</string>
     <string name="company">Perusahaan</string>
@@ -23,5 +27,9 @@
     <string name="search_hint">Masukkan username</string>
     <string name="search">Cari</string>
     <string name="change_language_settings">Ubah pengaturan bahasa</string>
-    <string name="favorite">Favorite</string>
+    <string name="favorite">Favorit</string>
+    <string name="icon_notification">icon notification</string>
+    <string name="reminder">Pengingat</string>
+    <string name="notification_time">09:00</string>
+
 </resources>
