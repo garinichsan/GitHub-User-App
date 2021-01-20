@@ -1,17 +1,11 @@
 package gin.garin.githubuser.detail
 
-import android.app.SearchManager
 import android.content.ContentValues
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide

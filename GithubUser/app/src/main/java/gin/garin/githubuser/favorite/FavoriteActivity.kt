@@ -5,16 +5,12 @@ import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import gin.garin.githubuser.R
 import gin.garin.githubuser.data.User
 import gin.garin.githubuser.databinding.ActivityFavoriteBinding
-import gin.garin.githubuser.databinding.ActivityHomeBinding
 import gin.garin.githubuser.db.UserContract
 import gin.garin.githubuser.db.UserHelper
 import gin.garin.githubuser.detail.DetailActivity
-import gin.garin.githubuser.home.HomeViewModel
 import gin.garin.githubuser.home.ListUserAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

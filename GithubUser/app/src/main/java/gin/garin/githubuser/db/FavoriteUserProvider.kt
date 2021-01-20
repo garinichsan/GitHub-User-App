@@ -40,13 +40,6 @@ class FavoriteUserProvider : ContentProvider() {
         }
     }
 
-    fun checkUsername(uri: Uri): Boolean? {
-        return when (sUriMatcher.match(uri)) {
-            USER_USERNAME -> userHelper.checkUsername(uri.lastPathSegment.toString())
-            else -> null
-        }
-    }
-
     override fun getType(uri: Uri): String? {
         return null
     }

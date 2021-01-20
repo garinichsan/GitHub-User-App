@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
-import android.provider.BaseColumns._ID
 import gin.garin.githubuser.db.UserContract.UserColumns.Companion.COLUMN_USERNAME
 import gin.garin.githubuser.db.UserContract.UserColumns.Companion.TABLE_NAME
 

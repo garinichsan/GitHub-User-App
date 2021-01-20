@@ -1,6 +1,5 @@
 package gin.garin.favorite
 
-import android.content.Intent
 import android.database.ContentObserver
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import gin.garin.favorite.UserContract.UserColumns.Companion.CONTENT_URI
 import gin.garin.favorite.databinding.ActivityMainBinding
